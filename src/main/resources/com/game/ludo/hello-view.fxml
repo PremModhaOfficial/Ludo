@@ -371,7 +371,7 @@
                   <Stop offset="1.0">
                      <color>
                         <Color red="0.1078680232167244" green="1.0" />
-                     </color>
+                       </color>
                   </Stop>
                </stops>
             </RadialGradient>
@@ -433,8 +433,8 @@
             </RadialGradient>
          </fill>
       </Circle>
-      <Button fx:id="DICE" layoutX="481.0" layoutY="24.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="118.0" stylesheets="@button.css" text="DICE" />
+      <Button fx:id="DICE" layoutX="481.0" layoutY="24.0" mnemonicParsing="false" onAction="#turnG" prefHeight="117.0" prefWidth="118.0" stylesheets="@button.css" text="DICE" />
       <Label layoutX="481.0" layoutY="145.0" prefHeight="78.0" prefWidth="118.0" text="TURNS" />
-      <Circle fill="DODGERBLUE" layoutX="129.5" layoutY="218.0" radius="13.5" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fill="DODGERBLUE" layoutX="38.5" layoutY="218.0" radius="13.5" scaleZ="2.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
