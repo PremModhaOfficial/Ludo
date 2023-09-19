@@ -39,11 +39,11 @@ static int k = 0;
     protected void setRed3(ActionEvent e) throws InterruptedException {
         mainEms();
         int step = RollDice();
-        if (!pathRed.containsKey(k+step)) {
+        if (!pathGreen.containsKey(k+step)) {
         } else {
-        k += step;
-            lol.setLayoutY((pathRed.get(k).y*29.7)+26);
-            lol.setLayoutX((pathRed.get(k).x*29.7)+26);
+        k += 1;
+            lol.setLayoutY((pathGreen.get(k).y*29.7)+26);
+            lol.setLayoutX((pathGreen.get(k).x*29.7)+26);
         }
     }
 
