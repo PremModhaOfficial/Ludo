@@ -2,13 +2,13 @@ package com.game.ludo;
 
 import java.util.Hashtable;
 
-public class LudoPlayerPiece {
+public class Piece {
     public String playerName;
     public LudoPlayer.Coordinates currentPosition;
     public Hashtable<Integer, LudoPlayer.Coordinates> positions;
     int stepCount;
 
-    public LudoPlayerPiece(Hashtable<Integer, LudoPlayer.Coordinates> Position,String playerName) {
+    public Piece(Hashtable<Integer, LudoPlayer.Coordinates> Position, String playerName) {
         this.playerName = playerName;
         stepCount = 0;
         this.positions = Position;

@@ -13,7 +13,7 @@ public class LudoGame {
     }
 
     ArrayList<LudoPlayer> players;
-    Hashtable<LudoPlayer.Coordinates,LudoPlayerPiece> allPositions;
+    Hashtable<LudoPlayer.Coordinates, Piece> allPositions;
 
     public LudoGame() {
         players = new ArrayList<>();
@@ -40,11 +40,13 @@ public class LudoGame {
                     System.out.println(p+" HAS WON!!");
                     System.exit(1);
                 }
-                for (LudoPlayerPiece playerPiece : p.playerPieces) {
-                    LudoPlayerPiece rejected = allPositions.put(playerPiece.currentPosition,playerPiece);
+                for (Piece playerPiece : p.playerPieces) {
+                    Piece rejected = allPositions.put(playerPiece.currentPosition,playerPiece);
                     if (rejected != null) {
-                        rejected.stepCount = 0;
-                        rejected.updatePosition(0);
+                        if (!rejected.playerName.equals(p.playerName)) {
+                            rejected.setStepCount(0);
+                            rejected.updatePosition(0);
+                        }
                     }
                 }
             }
@@ -53,8 +55,8 @@ public class LudoGame {
 
     private void setAllPositions() {
         for (LudoPlayer player : players) {
-            for (LudoPlayerPiece playerPiece : player.playerPieces) {
-                LudoPlayerPiece rejected = allPositions.put(playerPiece.currentPosition,playerPiece);
+            for (Piece playerPiece : player.playerPieces) {
+                Piece rejected = allPositions.put(playerPiece.currentPosition,playerPiece);
                 if (rejected != null) {
                     rejected.stepCount = 0;
                     rejected.updatePosition(0);
@@ -64,7 +66,6 @@ public class LudoGame {
     }
 
     private int RollDice() {
-//        return (int) ((Math.random() * 5.9999999999) + (1));
-        return 56;
+        return (int) ((Math.random() * 5.9999999999) + (1));
     }
 }

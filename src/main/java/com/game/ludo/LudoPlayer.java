@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 public class LudoPlayer {
     String playerName;
-     ArrayList<LudoPlayerPiece> playerPieces;
+     ArrayList<Piece> playerPieces;
 
     Hashtable<Integer, Coordinates> pathRed;
     Hashtable<Integer, Coordinates> pathGreen;
@@ -23,7 +23,7 @@ public class LudoPlayer {
         }
         playerPieces = new ArrayList<>(8);
         for (int i = 0; i < 4; i++) {
-            playerPieces.add(i, new LudoPlayerPiece(myPath,playerName));
+            playerPieces.add(i, new Piece(myPath,playerName));
         }
 
     }
@@ -57,7 +57,7 @@ public class LudoPlayer {
                 .forEach(System.out::print);
         System.out.println("select piece");
         Scanner scanner = new Scanner(System.in);
-        LudoPlayerPiece chosenPiece = null;
+        Piece chosenPiece = null;
         boolean successfullyCos = false;
         while (!successfullyCos) {
             System.out.println("chose from 1 to 4 of: " + playerName);
@@ -85,7 +85,7 @@ public class LudoPlayer {
 
 
         boolean gameWon = true;
-        for (LudoPlayerPiece p : playerPieces) {
+        for (Piece p : playerPieces) {
             gameWon = gameWon && !(p.positions.containsKey(p.stepCount + 1));
         }
         return gameWon;
