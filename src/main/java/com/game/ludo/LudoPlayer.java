@@ -9,11 +9,11 @@ import java.util.function.Function;
 public class LudoPlayer {
     String playerName;
      ArrayList<LudoPlayerPiece> playerPieces;
-     static Hashtable<Integer, Coordinates> pathRed;
-     static Hashtable<Integer, Coordinates> pathGreen;
-     static Hashtable<Integer, Coordinates> pathYellow;
-     static Hashtable<Integer, Coordinates> pathBlue;
 
+    Hashtable<Integer, Coordinates> pathRed;
+    Hashtable<Integer, Coordinates> pathGreen;
+    Hashtable<Integer, Coordinates> pathYellow;
+    Hashtable<Integer, Coordinates> pathBlue;
     public LudoPlayer(String playerName) {
         constructPaths();
         this.playerName = playerName;
@@ -22,12 +22,18 @@ public class LudoPlayer {
             throw new NullPointerException("null name");
         }
         playerPieces = new ArrayList<>(8);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             playerPieces.add(i, new LudoPlayerPiece(myPath,playerName));
         }
 
     }
 
+    public void constructPaths() {
+        pathRed = PathCreator(1, 6, Coordinates.MoveRight, Coordinates.MoveUp, Coordinates.MoveDown, Coordinates.MoveLeft);
+        pathGreen = PathCreator(8, 1, Coordinates.MoveDown, Coordinates.MoveRight, Coordinates.MoveLeft, Coordinates.MoveUp);
+        pathYellow = PathCreator(13, 8, Coordinates.MoveLeft, Coordinates.MoveDown, Coordinates.MoveUp, Coordinates.MoveRight);
+        pathBlue = PathCreator(6, 13, Coordinates.MoveUp, Coordinates.MoveRight, Coordinates.MoveLeft, Coordinates.MoveDown);
+    }
     private Hashtable<Integer, Coordinates> selectPath(String playerName) {
         Hashtable<Integer, Coordinates> myPath = null;
         switch (playerName.toUpperCase()) {
@@ -43,7 +49,11 @@ public class LudoPlayer {
     public boolean takeTurn(int step) {
         playerPieces
                 .stream()
-                .map(ludoPlayerPiece -> ludoPlayerPiece.playerName + ludoPlayerPiece.stepCount + " | " +ludoPlayerPiece.currentPosition)
+                .map(ludoPlayerPiece -> ludoPlayerPiece.playerName +
+                        " | " + ludoPlayerPiece +
+                        " | " + ludoPlayerPiece.stepCount +
+                        " | " + ludoPlayerPiece.currentPosition
+                )
                 .forEach(System.out::print);
         System.out.println("select piece");
         Scanner scanner = new Scanner(System.in);
@@ -89,12 +99,6 @@ public class LudoPlayer {
     /**
      * for use at controller
      */
-    public static void constructPaths() {
-        pathRed = PathCreator(1, 6, Coordinates.MoveRight, Coordinates.MoveUp, Coordinates.MoveDown, Coordinates.MoveLeft);
-        pathGreen = PathCreator(8, 1, Coordinates.MoveDown, Coordinates.MoveRight, Coordinates.MoveLeft, Coordinates.MoveUp);
-        pathYellow = PathCreator(13, 8, Coordinates.MoveLeft, Coordinates.MoveDown, Coordinates.MoveUp, Coordinates.MoveRight);
-        pathBlue = PathCreator(6, 13, Coordinates.MoveUp, Coordinates.MoveRight, Coordinates.MoveLeft, Coordinates.MoveDown);
-    }
 
     private static Hashtable<Integer, Coordinates> PathCreator(int x, int y, Function<Coordinates, Coordinates> first, Function<Coordinates, Coordinates> second, Function<Coordinates, Coordinates> third, Function<Coordinates, Coordinates> fourth) {
         Hashtable<Integer, Coordinates> path = new Hashtable<>();

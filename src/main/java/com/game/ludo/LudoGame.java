@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class LudoGame {
+    @Override
+    public String toString() {
+        return "LudoGame{" +
+                "players=" + players.toArray().length +
+                "allPositions=" + allPositions.values().toArray() +
+                '}';
+    }
+
     ArrayList<LudoPlayer> players;
     Hashtable<LudoPlayer.Coordinates,LudoPlayerPiece> allPositions;
 
