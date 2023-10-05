@@ -6,12 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
-
-import java.util.Map;
 //import javafx.scene.shape.Circle;
 
 
-public class HelloController extends LudoPlayerAbstract{
+public class HelloController extends LudoPlayer {
     @FXML
     private Label welcomeText = new Label("LOL");
 
@@ -22,9 +20,14 @@ public class HelloController extends LudoPlayerAbstract{
     Circle red3;
 
 static int k = 0;
+
+    public HelloController() {
+        super(PlayerName.RED.name());
+    }
+
     @FXML
     protected void turnG(ActionEvent e) throws InterruptedException {
-        mainEms();
+        constructPaths();
         k += RollDice();
         try {
             red3.setCenterX(pathRed.get(k).y*29);
@@ -37,13 +40,13 @@ static int k = 0;
     Button lol;
     @FXML
     protected void setRed3(ActionEvent e) throws InterruptedException {
-        mainEms();
+        constructPaths();
         int step = RollDice();
         if (!pathGreen.containsKey(k+step)) {
         } else {
         k += 1;
-            lol.setLayoutY((pathGreen.get(k).y*29.7)+26);
-            lol.setLayoutX((pathGreen.get(k).x*29.7)+26);
+            lol.setLayoutY((pathYellow.get(k).y*29.8)+26);
+            lol.setLayoutX((pathYellow.get(k).x*29.8)+26);
         }
     }
 
