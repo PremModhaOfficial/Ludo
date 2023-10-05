@@ -35,4 +35,9 @@ public class Piece {
         setStepCount(stepCount + step);
         this.currentPosition = positions.get(stepCount);
     }
+
+    @Override
+    public String toString() {
+        return  playerName + " @ " + stepCount ;
+    }
 }

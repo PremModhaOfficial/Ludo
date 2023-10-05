@@ -37,409 +37,80 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.game.ludo.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="502.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.game.ludo.Controller">
    <children>
       <ImageView fitHeight="450.0" fitWidth="450.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@ludo_board.jpg" />
          </image>
       </ImageView>
-      <Circle fx:id="blue3" layoutX="84.0" layoutY="415.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color green="0.17385786771774292" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="blue4" layoutX="142.0" layoutY="415.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color green="0.17385786771774292" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="blue2" layoutX="142.0" layoutY="356.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color green="0.17385786771774292" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="blue1" layoutX="84.0" layoutY="356.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color green="0.17385786771774292" blue="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="red1" layoutX="84.0" layoutY="85.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle layoutX="355.0" layoutY="356.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.8304172274562581">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="red2" layoutX="142.0" layoutY="85.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="red4" layoutX="142.0" layoutY="144.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="red3" layoutX="84.0" layoutY="144.0" onMouseClicked="#setRed3" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="y" layoutX="413.0" layoutY="356.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.8304172274562581">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle layoutX="413.0" layoutY="415.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.8304172274562581">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle layoutX="355.0" layoutY="415.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.8304172274562581">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="1.0" green="0.9784263968467712" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="green1" layoutX="355.0" layoutY="85.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.1078680232167244" green="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="green2" layoutX="413.0" layoutY="85.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.1078680232167244" green="1.0" />
-                       </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="green3" layoutX="355.0" layoutY="145.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.1078680232167244" green="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Circle fx:id="green4" layoutX="413.0" layoutY="145.0" radius="17.0" stroke="BLACK" strokeType="INSIDE">
-         <fill>
-            <RadialGradient centerX="0.5044052611363616" centerY="0.4924242496490478" radius="0.5">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006729475100942127">
-                     <color>
-                        <Color />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.1078680232167244" green="1.0" />
-                     </color>
-                  </Stop>
-               </stops>
-            </RadialGradient>
-         </fill>
-      </Circle>
-      <Button fx:id="DICE" layoutX="481.0" layoutY="24.0" mnemonicParsing="false" onAction="#turnG" prefHeight="117.0" prefWidth="118.0" stylesheets="@button.css" text="DICE" />
+      <Button fx:id="DICE" layoutX="481.0" layoutY="24.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="118.0" stylesheets="@button.css" text="DICE" />
       <Label layoutX="481.0" layoutY="145.0" prefHeight="78.0" prefWidth="118.0" text="TURNS" />
-      <Circle fill="DODGERBLUE" layoutX="55.5" layoutY="204.0" radius="13.5" scaleZ="2.0" stroke="BLACK" strokeType="INSIDE" />
-      <Button fx:id="lol" layoutX="174.0" layoutY="29.0" mnemonicParsing="false" onAction="#setRed3" style="-fx-border-radius: 15px;" text="r3" textFill="RED" textOverrun="CENTER_ELLIPSIS" />
+      <Button layoutX="71.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="130.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="70.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="129.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="72.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="131.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="71.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="129.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="342.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="400.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="341.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="398.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="342.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="402.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="342.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button layoutX="400.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>

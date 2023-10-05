@@ -49,11 +49,7 @@ public class LudoPlayer {
     public boolean takeTurn(int step) {
         playerPieces
                 .stream()
-                .map(ludoPlayerPiece -> ludoPlayerPiece.playerName +
-                        " | " + ludoPlayerPiece +
-                        " | " + ludoPlayerPiece.stepCount +
-                        " | " + ludoPlayerPiece.currentPosition
-                )
+                .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
                 .forEach(System.out::print);
         System.out.println("select piece");
         Scanner scanner = new Scanner(System.in);
@@ -140,6 +136,10 @@ public class LudoPlayer {
         return path;
     }
 
+    @Override
+    public String toString() {
+        return  playerName;
+    }
 
     static class Coordinates {
         int x;

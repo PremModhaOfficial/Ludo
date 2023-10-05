@@ -8,7 +8,7 @@ public class LudoGame {
     public String toString() {
         return "LudoGame{" +
                 "players=" + players.toArray().length +
-                "allPositions=" + allPositions.values().toArray() +
+                "allPositions=" + allPositions +
                 '}';
     }
 
@@ -33,12 +33,12 @@ public class LudoGame {
         boolean GameWon = false;
         while (!GameWon) {
             for (LudoPlayer p : players) {
-                System.out.println(p);
                 int step = RollDice();
+                System.out.println(p + " <> " + step);
                 GameWon = p.takeTurn(step);
                 if (GameWon) {
                     System.out.println(p+" HAS WON!!");
-                    System.exit(1);
+                    break;
                 }
                 for (Piece playerPiece : p.playerPieces) {
                     Piece rejected = allPositions.put(playerPiece.currentPosition,playerPiece);
