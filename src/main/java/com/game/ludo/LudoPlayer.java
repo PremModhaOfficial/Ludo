@@ -49,15 +49,16 @@ public class LudoPlayer {
     public Piece takeTurn(int step) {
 
         int hardChoice = 1;
-        playerPieces
-                .stream()
-                .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
-                .forEach(System.out::print);
+//        playerPieces
+//                .stream()
+//                .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
+//                .forEach(System.out::print);
         System.out.println("select piece");
         Piece chosenPiece = null;
         boolean successfullyCos = false;
         while (!successfullyCos) {
-            System.out.println("chose from 1 to 4 of: " + playerName + " for " + hardChoice++);
+            System.out.println("chose from 1 to 4 of: " + playerName);
+            hardChoice++;
 //               stringChoice = scanner.nextLine();
 
             List<Boolean> allCanStep = playerPieces.stream().map(piece -> piece.canMove(step)).toList();
