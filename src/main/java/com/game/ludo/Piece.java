@@ -41,7 +41,7 @@ public class Piece {
         return  playerName + " @ " + stepCount ;
     }
 
-    public boolean canmove(int step) {
+    public boolean canMove(int step) {
         return step + stepCount <= 56;
     }
 

@@ -5,16 +5,17 @@ import java.util.function.Function;
 
 public class LudoPlayer {
     String playerName;
+    boolean isHuman;
     ArrayList<Piece> playerPieces;
-
     Hashtable<Integer, Coordinates> pathRed;
     Hashtable<Integer, Coordinates> pathGreen;
     Hashtable<Integer, Coordinates> pathYellow;
     Hashtable<Integer, Coordinates> pathBlue;
 
-    public LudoPlayer(String playerName) {
+    public LudoPlayer(String playerName, boolean isHuman) {
         constructPaths();
         this.playerName = playerName;
+        this.isHuman = isHuman;
         Hashtable<Integer, Coordinates> myPath = selectPath(playerName);
         if (myPath == null) {
             throw new NullPointerException("null name");
@@ -45,37 +46,37 @@ public class LudoPlayer {
         return myPath;
     }
 
-    public boolean takeTurn(int step) {
+    public Piece takeTurn(int step) {
+
         int hardChoice = 1;
         playerPieces
                 .stream()
                 .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
                 .forEach(System.out::print);
         System.out.println("select piece");
-        Scanner scanner = new Scanner(System.in);
         Piece chosenPiece = null;
         boolean successfullyCos = false;
         while (!successfullyCos) {
             System.out.println("chose from 1 to 4 of: " + playerName + " for " + hardChoice++);
 //               stringChoice = scanner.nextLine();
 
-            List<Boolean> allCanStep = playerPieces.stream().map(piece -> piece.canmove(step)).toList();
+            List<Boolean> allCanStep = playerPieces.stream().map(piece -> piece.canMove(step)).toList();
             if (!allCanStep.contains(true))
                 break;
 
-                    switch (hardChoice+"") {
-                        case "1" -> chosenPiece = playerPieces.get(0);
-                        case "2" -> chosenPiece = playerPieces.get(1);
-                        case "3" -> chosenPiece = playerPieces.get(2);
-                        case "4" -> chosenPiece = playerPieces.get(3);
-                        default -> {
-                            System.out.println("enter valid input");
-                            hardChoice = hardChoice + 1;
-                            if (hardChoice > 4) {
-                                hardChoice = 0;
-                            }
-                        }
+            switch (hardChoice + "") {
+                case "1" -> chosenPiece = playerPieces.get(0);
+                case "2" -> chosenPiece = playerPieces.get(1);
+                case "3" -> chosenPiece = playerPieces.get(2);
+                case "4" -> chosenPiece = playerPieces.get(3);
+                default -> {
+                    System.out.println("enter valid input");
+                    hardChoice = hardChoice + 1;
+                    if (hardChoice > 4) {
+                        hardChoice = 0;
                     }
+                }
+            }
             if (chosenPiece == null)
                 continue;
             if (chosenPiece.positions.containsKey(step + chosenPiece.stepCount)) {
@@ -85,17 +86,17 @@ public class LudoPlayer {
                 System.out.println("couldn't Move");
             }
         }
-        return !playerPieces.stream().map(piece -> piece.reachedGoal()).toList().contains(false);
+        if (!playerPieces.stream().map(Piece::reachedGoal).toList().contains(false)) {
+            System.out.println(playerName + " Has WON!!");
+            System.exit(0);
+        }
+        return chosenPiece;
     }
 
 
     public enum PlayerName {
         GREEN, RED, YELLOW, BLUE
     }
-
-    /**
-     * for use at controller
-     */
 
     private static Hashtable<Integer, Coordinates> PathCreator(int x, int y, Function<Coordinates, Coordinates> first, Function<Coordinates, Coordinates> second, Function<Coordinates, Coordinates> third, Function<Coordinates, Coordinates> fourth) {
         Hashtable<Integer, Coordinates> path = new Hashtable<>();
@@ -148,7 +149,6 @@ public class LudoPlayer {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             Coordinates that = (Coordinates) o;
             return x == that.x && y == that.y;
@@ -163,7 +163,6 @@ public class LudoPlayer {
             this.x = x;
             this.y = y;
         }
-
 
         static Function<Coordinates, Coordinates> MoveUp = coordinates -> new Coordinates(coordinates.x, coordinates.y--);
         static Function<Coordinates, Coordinates> MoveDown = coordinates -> new Coordinates(coordinates.x, coordinates.y++);
