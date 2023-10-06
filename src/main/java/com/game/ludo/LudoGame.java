@@ -1,15 +1,13 @@
 package com.game.ludo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 
 public class LudoGame {
     @Override
     public String toString() {
-        return "LudoGame{" +
-                "players=" + players.toArray().length +
-                "allPositions=" + allPositions +
-                '}';
+        return "players: " + Arrays.stream(players.toArray()).toList() + "::";
     }
 
     ArrayList<LudoPlayer> players;
@@ -27,7 +25,7 @@ public class LudoGame {
         new LudoGame().startPlaying();
     }
 
-    private void startPlaying() {
+    public void startPlaying() {
         allPositions = new Hashtable<>();
         setAllPositions();
         boolean GameWon = false;
@@ -53,19 +51,20 @@ public class LudoGame {
         }
     }
 
-    private void setAllPositions() {
+    public void setAllPositions() {
         for (LudoPlayer player : players) {
             for (Piece playerPiece : player.playerPieces) {
                 Piece rejected = allPositions.put(playerPiece.currentPosition,playerPiece);
                 if (rejected != null) {
                     rejected.stepCount = 0;
                     rejected.updatePosition(0);
+                    System.out.println(player + " has send " + rejected + " home");
                 }
             }
         }
     }
 
-    private int RollDice() {
+    public int RollDice() {
         return (int) ((Math.random() * 5.9999999999) + (1));
     }
 }

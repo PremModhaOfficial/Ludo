@@ -46,71 +46,71 @@
             <Image url="@ludo_board.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="DICE" layoutX="481.0" layoutY="24.0" mnemonicParsing="false" prefHeight="117.0" prefWidth="118.0" stylesheets="@button.css" text="DICE" />
-      <Label layoutX="481.0" layoutY="145.0" prefHeight="78.0" prefWidth="118.0" text="TURNS" />
-      <Button layoutX="71.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="DICE" layoutX="481.0" layoutY="24.0" mnemonicParsing="false" onAction="#start" prefHeight="117.0" prefWidth="118.0" stylesheets="@button.css" text="DICE" />
+      <Button fx:id="R1" layoutX="71.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="130.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="R2" layoutX="130.0" layoutY="72.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="70.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="R3" layoutX="70.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="129.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="R4" layoutX="129.0" layoutY="129.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-border-color: black; -fx-background-color: red;" text="R" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="72.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="B1" layoutX="72.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="131.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="B2" layoutX="131.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="71.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="B3" layoutX="71.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="129.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+      <Button fx:id="B4" layoutX="129.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: blue; -fx-border-color: white;" text="B" textAlignment="CENTER" textFill="WHITE" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="342.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="Y1" layoutX="342.0" layoutY="344.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="400.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="Y2" layoutX="400.0" layoutY="343.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="341.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="Y3" layoutX="341.0" layoutY="401.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="398.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
+      <Button fx:id="Y4" layoutX="398.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: yellow; -fx-border-color: black;" text="Y" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="342.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="402.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="342.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="400.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="G1" layoutX="342.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="G2" layoutX="402.0" layoutY="73.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="G3" layoutX="342.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="G4" layoutX="400.0" layoutY="130.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="27.0" style="-fx-background-color: green; -fx-border-color: black;" text="G" textAlignment="CENTER" wrapText="true" />
+      <Label fx:id="turnLabel" layoutX="481.0" layoutY="145.0" prefHeight="78.0" prefWidth="118.0" />
    </children>
 </AnchorPane>
