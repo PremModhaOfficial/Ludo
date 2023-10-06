@@ -1,19 +1,17 @@
 package com.game.ludo;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 import java.util.function.Function;
 
 public class LudoPlayer {
     String playerName;
-     ArrayList<Piece> playerPieces;
+    ArrayList<Piece> playerPieces;
 
     Hashtable<Integer, Coordinates> pathRed;
     Hashtable<Integer, Coordinates> pathGreen;
     Hashtable<Integer, Coordinates> pathYellow;
     Hashtable<Integer, Coordinates> pathBlue;
+
     public LudoPlayer(String playerName) {
         constructPaths();
         this.playerName = playerName;
@@ -23,7 +21,7 @@ public class LudoPlayer {
         }
         playerPieces = new ArrayList<>(8);
         for (int i = 0; i < 4; i++) {
-            playerPieces.add(i, new Piece(myPath,playerName));
+            playerPieces.add(i, new Piece(myPath, playerName));
         }
 
     }
@@ -34,6 +32,7 @@ public class LudoPlayer {
         pathYellow = PathCreator(13, 8, Coordinates.MoveLeft, Coordinates.MoveDown, Coordinates.MoveUp, Coordinates.MoveRight);
         pathBlue = PathCreator(6, 13, Coordinates.MoveUp, Coordinates.MoveRight, Coordinates.MoveLeft, Coordinates.MoveDown);
     }
+
     private Hashtable<Integer, Coordinates> selectPath(String playerName) {
         Hashtable<Integer, Coordinates> myPath = null;
         switch (playerName.toUpperCase()) {
@@ -47,6 +46,7 @@ public class LudoPlayer {
     }
 
     public boolean takeTurn(int step) {
+        int hardChoice = 1;
         playerPieces
                 .stream()
                 .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
@@ -56,14 +56,26 @@ public class LudoPlayer {
         Piece chosenPiece = null;
         boolean successfullyCos = false;
         while (!successfullyCos) {
-            System.out.println("chose from 1 to 4 of: " + playerName);
-            switch (scanner.nextLine()) {
-                case "1" -> chosenPiece = playerPieces.get(0);
-                case "2" -> chosenPiece = playerPieces.get(1);
-                case "3" -> chosenPiece = playerPieces.get(2);
-                case "4" -> chosenPiece = playerPieces.get(3);
-                default -> System.out.println("enter valid input");
-            }
+            System.out.println("chose from 1 to 4 of: " + playerName + " for " + hardChoice++);
+//               stringChoice = scanner.nextLine();
+
+            List<Boolean> allCanStep = playerPieces.stream().map(piece -> piece.canmove(step)).toList();
+            if (!allCanStep.contains(true))
+                break;
+
+                    switch (hardChoice+"") {
+                        case "1" -> chosenPiece = playerPieces.get(0);
+                        case "2" -> chosenPiece = playerPieces.get(1);
+                        case "3" -> chosenPiece = playerPieces.get(2);
+                        case "4" -> chosenPiece = playerPieces.get(3);
+                        default -> {
+                            System.out.println("enter valid input");
+                            hardChoice = hardChoice + 1;
+                            if (hardChoice > 4) {
+                                hardChoice = 0;
+                            }
+                        }
+                    }
             if (chosenPiece == null)
                 continue;
             if (chosenPiece.positions.containsKey(step + chosenPiece.stepCount)) {
@@ -73,18 +85,7 @@ public class LudoPlayer {
                 System.out.println("couldn't Move");
             }
         }
-//        //elimination
-//        Coordinates newOnes = chosenPiece.currentPosition;
-//        if (allPositions.containsKey(newOnes)) {
-//            System.out.println("lol unread");
-//        }
-
-
-        boolean gameWon = true;
-        for (Piece p : playerPieces) {
-            gameWon = gameWon && !(p.positions.containsKey(p.stepCount + 1));
-        }
-        return gameWon;
+        return !playerPieces.stream().map(piece -> piece.reachedGoal()).toList().contains(false);
     }
 
 
@@ -138,7 +139,7 @@ public class LudoPlayer {
 
     @Override
     public String toString() {
-        return  playerName;
+        return playerName;
     }
 
     static class Coordinates {

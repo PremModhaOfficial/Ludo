@@ -40,4 +40,12 @@ public class Piece {
     public String toString() {
         return  playerName + " @ " + stepCount ;
     }
+
+    public boolean canmove(int step) {
+        return step + stepCount <= 56;
+    }
+
+    public boolean reachedGoal() {
+        return stepCount == 56;
+    }
 }
