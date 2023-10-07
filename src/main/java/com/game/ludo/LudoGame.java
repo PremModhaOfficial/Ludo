@@ -27,8 +27,25 @@ public class LudoGame {
         players = new ArrayList<>();
         for (int i = 0; i < iterates; i++) {
             try {
-                players.add(new LudoPlayer(ArrayOfPlayersNames[i], totalPlayers - includesBot > 0));
-//                System.out.println(totalPlayers - includesBot > 0 ? "HUMAN" : "BOT+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
+                System.out.println("select colour");
+                System.out.println("""
+                        R red
+                        Y yellow
+                        G green
+                        B blue
+                        """);
+                String playerColor = ArrayOfPlayersNames[i];
+                Scanner scanner = new Scanner(System.in);
+                switch (scanner.nextLine().toLowerCase()) {
+                    case "r" -> playerColor = ArrayOfPlayersNames[0];
+                    case "y" -> playerColor = ArrayOfPlayersNames[1];
+                    case "b" -> playerColor = ArrayOfPlayersNames[3];
+                    case "g" -> playerColor = ArrayOfPlayersNames[2];
+                    default -> System.out.println("going with default");
+                }
+
+                players.add(new LudoPlayer(playerColor, totalPlayers - includesBot > 0));
+                System.out.println(totalPlayers - includesBot > 0 ? "HUMAN" : "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+BOT+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
                 totalPlayers--;
             } catch (NullPointerException e) {
                 throw new RuntimeException("only 4 max player Allowed");

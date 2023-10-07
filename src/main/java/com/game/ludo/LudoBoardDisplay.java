@@ -78,7 +78,7 @@ public class LudoBoardDisplay {
         }
 
     public static void main(String[] args) {
-        LudoGame game = new LudoGame(4, 0); // Example game with 4 players
+        LudoGame game = new LudoGame(3, 3);
         displayBoard(game);
     }
     public static void displayPlayerTurn(LudoPlayer player, int step) {
