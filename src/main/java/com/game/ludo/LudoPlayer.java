@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.function.Function;
 
 public class LudoPlayer {
+    public int pieceAtHome;
     String playerName;
     boolean isHuman;
     ArrayList<Piece> playerPieces;
@@ -24,7 +25,7 @@ public class LudoPlayer {
         for (int i = 0; i < 4; i++) {
             playerPieces.add(i, new Piece(myPath, playerName));
         }
-
+        pieceAtHome = 4;
     }
 
     public void constructPaths() {
@@ -47,40 +48,46 @@ public class LudoPlayer {
     }
 
     public Piece takeTurn(int step) {
-
+        Scanner scanner = new Scanner(System.in);
         int hardChoice = 1;
-//        playerPieces
-//                .stream()
-//                .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
-//                .forEach(System.out::print);
+        String finalChoice = "1";
+        playerPieces
+                .stream()
+                .map(ludoPlayerPiece -> ludoPlayerPiece + " | " + ludoPlayerPiece.currentPosition)
+                .forEach(System.out::print);
         System.out.println("select piece");
         Piece chosenPiece = null;
         boolean successfullyCos = false;
         while (!successfullyCos) {
-            System.out.println("chose from 1 to 4 of: " + playerName);
-            hardChoice++;
-//               stringChoice = scanner.nextLine();
-
             List<Boolean> allCanStep = playerPieces.stream().map(piece -> piece.canMove(step)).toList();
-            if (!allCanStep.contains(true))
+            if (!allCanStep.contains(true)) {
+                System.out.println("None Can Move Skipping The Turn");
                 break;
+            }
+            System.out.println("chose from 1 to 4 of: " + playerName);
+            if (this.isHuman) {
+                finalChoice = scanner.nextLine();
+            } else {
+                finalChoice = hardChoice++ + "";
+            }
 
-            switch (hardChoice + "") {
+            /**
+             *  if any one piece can move then this will not break the loop will
+             */
+
+            switch (finalChoice) {
                 case "1" -> chosenPiece = playerPieces.get(0);
                 case "2" -> chosenPiece = playerPieces.get(1);
                 case "3" -> chosenPiece = playerPieces.get(2);
                 case "4" -> chosenPiece = playerPieces.get(3);
                 default -> {
                     System.out.println("enter valid input");
-                    hardChoice = hardChoice + 1;
-                    if (hardChoice > 4) {
-                        hardChoice = 0;
-                    }
+                    hardChoice = 1;
                 }
             }
             if (chosenPiece == null)
                 continue;
-            if (chosenPiece.positions.containsKey(step + chosenPiece.stepCount)) {
+            if (chosenPiece.canMove(step)) {
                 chosenPiece.updatePosition(step);
                 successfullyCos = true;
             } else {
@@ -99,9 +106,14 @@ public class LudoPlayer {
         GREEN, RED, YELLOW, BLUE
     }
 
-    private static Hashtable<Integer, Coordinates> PathCreator(int x, int y, Function<Coordinates, Coordinates> first, Function<Coordinates, Coordinates> second, Function<Coordinates, Coordinates> third, Function<Coordinates, Coordinates> fourth) {
+    private static Hashtable<Integer, Coordinates> PathCreator(
+            int x, int y, Function<Coordinates, Coordinates> first,
+            Function<Coordinates, Coordinates> second,
+            Function<Coordinates, Coordinates> third,
+            Function<Coordinates, Coordinates> fourth) {
         Hashtable<Integer, Coordinates> path = new Hashtable<>();
         Coordinates coordinates = new Coordinates(x, y);
+        path.put(-1, new Coordinates(-1, -1));
         int T = 0;
         for (int i = 0; i < 5; i++)
             path.put(T++, first.apply(coordinates));

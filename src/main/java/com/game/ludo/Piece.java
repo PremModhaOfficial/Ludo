@@ -5,14 +5,14 @@ import java.util.Hashtable;
 public class Piece {
     public String playerName;
     public LudoPlayer.Coordinates currentPosition;
-    public Hashtable<Integer, LudoPlayer.Coordinates> positions;
+    public Hashtable<Integer, LudoPlayer.Coordinates> pathTable;
     int stepCount;
 
-    public Piece(Hashtable<Integer, LudoPlayer.Coordinates> Position, String playerName) {
+    public Piece(Hashtable<Integer, LudoPlayer.Coordinates> pathTable, String playerName) {
         this.playerName = playerName;
-        stepCount = 0;
-        this.positions = Position;
-        currentPosition = positions.get(stepCount);
+        stepCount = -1;
+        this.pathTable = pathTable;
+        currentPosition = this.pathTable.get(stepCount);
     }
 
     public void setPlayerName(String playerName) {
@@ -23,8 +23,8 @@ public class Piece {
         this.currentPosition = currentPosition;
     }
 
-    public void setPositions(Hashtable<Integer, LudoPlayer.Coordinates> positions) {
-        this.positions = positions;
+    public void setPathTable(Hashtable<Integer, LudoPlayer.Coordinates> pathTable) {
+        this.pathTable = pathTable;
     }
 
     public void setStepCount(int stepCount) {
@@ -32,8 +32,13 @@ public class Piece {
     }
 
     public void updatePosition(int step) {
-        setStepCount(stepCount + step);
-        this.currentPosition = positions.get(stepCount);
+        LudoPlayer.Coordinates previousPosition = currentPosition;
+        if (stepCount == -1) {
+            setStepCount(0);
+        } else {
+            setStepCount(stepCount + step);
+        }
+        this.currentPosition = pathTable.get(stepCount);
     }
 
     @Override
@@ -42,7 +47,13 @@ public class Piece {
     }
 
     public boolean canMove(int step) {
-        return step + stepCount <= 56;
+        if (stepCount == -1 && step==6) {
+            return true;
+        } else if (step < 6 && stepCount == -1) {
+            return false;
+        } else {
+            return step + stepCount <= 56;
+        }
     }
 
     public boolean reachedGoal() {

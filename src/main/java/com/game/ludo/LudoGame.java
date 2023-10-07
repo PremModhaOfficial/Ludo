@@ -2,6 +2,7 @@ package com.game.ludo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import static com.game.ludo.LudoBoardDisplay.displayBoard;
 
@@ -27,7 +28,7 @@ public class LudoGame {
         for (int i = 0; i < iterates; i++) {
             try {
                 players.add(new LudoPlayer(ArrayOfPlayersNames[i], totalPlayers - includesBot > 0));
-                System.out.println(totalPlayers - includesBot > 0 ? "HUMAN" : "BOT+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
+//                System.out.println(totalPlayers - includesBot > 0 ? "HUMAN" : "BOT+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
                 totalPlayers--;
             } catch (NullPointerException e) {
                 throw new RuntimeException("only 4 max player Allowed");
@@ -36,31 +37,42 @@ public class LudoGame {
     }
 
     public static void main(String[] args) {
-        new LudoGame(3, 2).startPlaying();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("How many players?");
+        int totalPlayers = 0, totalBots = 0;
+        try {
+            totalPlayers = Integer.parseInt(scanner.nextLine());
+            System.out.println("Of Witch How many are Robots?");
+            totalBots = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("NOT A NUMBER!");
+        }
+        new LudoGame(Math.min(4, Math.max(2, totalPlayers)), Math.min(4, Math.max(0, totalBots))).startPlaying();
     }
 
     public void startPlaying() {
+        displayBoard(this); // Display the game board
         while (true) {
-            displayBoard(this); // Display the game board
-
             for (LudoPlayer currentPlayer : players) {
-                int step = RollDice();
-                LudoBoardDisplay.displayPlayerTurn(currentPlayer, step);
-
-                Piece updatedPiece = currentPlayer.takeTurn(step);
-                if (updatedPiece != null) {
-                    for (LudoPlayer allPlayers : players) {
-                        for (Piece piece : allPlayers.playerPieces) {
-                            if (!updatedPiece.playerName.equals(piece.playerName) && updatedPiece.currentPosition.equals(piece.currentPosition)) {
-                                LudoBoardDisplay.displayCollision(piece, updatedPiece);
-                                piece.stepCount = 0;
-                                piece.updatePosition(0);
+                int step;
+                do {
+                    step = RollDice();
+                    displayBoard(this);
+                    LudoBoardDisplay.displayPlayerTurn(currentPlayer, step);
+                    Piece updatedPiece = currentPlayer.takeTurn(step);
+                    if (updatedPiece != null) {
+                        for (LudoPlayer allPlayers : players) {
+                            for (Piece piece : allPlayers.playerPieces) {
+                                if (!updatedPiece.playerName.equals(piece.playerName) && updatedPiece.currentPosition.equals(piece.currentPosition)) {
+                                    LudoBoardDisplay.displayCollision(piece, updatedPiece);
+                                    piece.stepCount = -1;
+                                    piece.updatePosition(0);
+                                }
                             }
                         }
+                        LudoBoardDisplay.displayPieceMoved(updatedPiece);
                     }
-                }
-                if (updatedPiece != null)
-                    LudoBoardDisplay.displayPieceMoved(updatedPiece);
+                } while (step == 6);
             }
         }
     }
