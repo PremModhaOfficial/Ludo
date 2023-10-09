@@ -35,15 +35,15 @@ public class LudoGame {
                         B blue
                         """);
                 String playerColor = ArrayOfPlayersNames[i];
-                Scanner scanner = new Scanner(System.in);
-                switch (scanner.nextLine().toLowerCase()) {
-                    case "r" -> playerColor = ArrayOfPlayersNames[0];
-                    case "y" -> playerColor = ArrayOfPlayersNames[1];
-                    case "b" -> playerColor = ArrayOfPlayersNames[3];
-                    case "g" -> playerColor = ArrayOfPlayersNames[2];
-                    default -> System.out.println("going with default");
-                }
-
+//                Scanner scanner = new Scanner(System.in);
+//                switch (scanner.nextLine().toLowerCase()) {
+//                    case "r" -> playerColor = ArrayOfPlayersNames[0];
+//                    case "y" -> playerColor = ArrayOfPlayersNames[1];
+//                    case "b" -> playerColor = ArrayOfPlayersNames[3];
+//                    case "g" -> playerColor = ArrayOfPlayersNames[2];
+//                    default -> System.out.println("going with default");
+//                }
+//
                 players.add(new LudoPlayer(playerColor, totalPlayers - includesBot > 0));
                 System.out.println(totalPlayers - includesBot > 0 ? "HUMAN" : "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+BOT+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
                 totalPlayers--;
@@ -73,9 +73,8 @@ public class LudoGame {
             for (LudoPlayer currentPlayer : players) {
                 int step;
                 do {
-                    step = RollDice();
                     displayBoard(this);
-                    LudoBoardDisplay.displayPlayerTurn(currentPlayer, step);
+                    LudoBoardDisplay.displayPlayerTurn(currentPlayer, step = RollDice());
                     Piece updatedPiece = currentPlayer.takeTurn(step);
                     if (updatedPiece != null) {
                         for (LudoPlayer allPlayers : players) {

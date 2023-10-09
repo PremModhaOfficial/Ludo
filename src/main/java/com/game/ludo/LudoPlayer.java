@@ -107,7 +107,8 @@ public class LudoPlayer {
     }
 
     private static Hashtable<Integer, Coordinates> PathCreator(
-            int x, int y, Function<Coordinates, Coordinates> first,
+            int x, int y,
+            Function<Coordinates, Coordinates> first,
             Function<Coordinates, Coordinates> second,
             Function<Coordinates, Coordinates> third,
             Function<Coordinates, Coordinates> fourth) {
